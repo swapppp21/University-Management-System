@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class='col-2'>
+    </div>
+    <div class="col-8">
+        <div class="card bg-light">
+            <div class="card-body">
+                {% for j in marks|slice:":1"%}
+                    <h2>{{j.subject}} Marks</h2>
+                {% endfor %}
+            </div>
+
+            
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <td class="col-1">Name</td>
+                            <td class="col-1">Remove</td>
+                            <td class='col-1'>update</td>
+                            <td class="col-1">IT-I</td>
+                            <td class="col-1">IT-II</td>
+                            <td class="col-1">IT-III</td>
+                            <td class="col-1">Semend</td>
+                            <td class='col-1'>Avg</td>
+                        </tr>
+                            {% for j in marks %}
+                                <tr>
+                                    <td class="col-1">{{j.student}}</td>
+                                    <td class='col-1'><a href="/delmarks/{{j.student_id}}/"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                                    <td class='col-1'><a href="/updatemarks/{{j.id}}/"><button type="button" class="btn btn-danger">Update</button></a></td>
+                                    <td class="col-1">{{j.It1}}</td>
+                                    <td class="col-1">{{j.It2}}</td>
+                                    <td class="col-1">{{j.It3}} </td>
+                                    <td class="col-1">{{j.semend}} </td>
+                                    <td class="col-1">19</td>
+                                    
+                                </tr>
+                            {%endfor%}
+                    </tbody>
+                </table>
+                
+            <br><br>
+            <a href="/teacherdet/123/"><button type="button" class="btn btn-dark">Back</button></a>
+            <br>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+

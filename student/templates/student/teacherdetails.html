@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-3">
+        <div class="card bg-light">
+            <div class="card-body box-profile">
+                <div class="profile-stdent">
+                    <img class="profile-stdent-img" src="{% static 'images/user-default.png' %}" alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">{{info.name}}</h3>
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <b>Teacher No: </b> <span class="pull-right"><p>{{info.trno}}</p></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Department: </b> <span class="pull-right"><p>{{info.dept}}</p></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Post: </b> <span class="pull-right"><p>{{info.post}}</p></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class='col-9'>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href=".exam">Subjects</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Attendance</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#" >Fees</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="datapro">
+                        <div class="profile">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">Date of enrollement</td>
+                                        <td class="col-md-5">03/18/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">trNumber</td>
+                                        <td class="col-md-5">{{info.trno}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">Department</td>
+                                        <td class="col-md-5">{{info.dept}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">education</td>
+                                        <td class="col-md-5">{{info.edu}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">Mobile NO</td>
+                                            <td class="col-md-5">{{info.mobno}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">Email</td>
+                                        <td class="col-md-5">{{info.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-4">address</td>
+                                        <td class="col-md-5">{{info.email}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class='subjects'>
+                            <h3>Subjects</h3>
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td class="col-md-4">Subject name</td>
+                                        <td class="col-md-4">No.of.Students</td>
+                                        <td class="col-md-4">Average score</td>
+                                    </tr>
+                                    {% for i in subjects %}
+                                        <tr>
+                                            <td class="col-md-4">{{i.subject}}</td>
+                                            <td class="col-md-4">90</td>
+                                            <td class="col-md-4">80</td>
+                                        </tr>
+                                   {%  endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class='marks'>
+                            <h3>Enter Marks</h3>
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                {% for i in subjects %}
+                                    <tr>
+                                        <td class="col-md-4">{{i.subject}}</td>
+                                        <td class="col-md-7"><a href="/marks/{{i.subject_id}}/"><button type="button" class="btn btn-primary">Enter</button></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
